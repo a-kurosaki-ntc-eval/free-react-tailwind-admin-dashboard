@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
-import PageTitle from './components/PageTitle';
+import PageTitle from './components/Utils/PageTitle';
 import Terms from './pages/Terms';
 import Usage from './pages/Usage';
 import Usecase from './pages/Usecase/index';

@@ -1,7 +1,16 @@
 import { useState } from 'react';
+import { useAppContext } from '../../context/AppContext';
 
 const UsecaseInfoForm = (
   {
+    endpoint
+  }: {
+    endpoint: string
+  }
+) => {
+  const {
+    isEditing,
+    setIsEditing,
     title,
     setTitle,
     systemMessage,
@@ -12,22 +21,7 @@ const UsecaseInfoForm = (
     setSampleQuestion2,
     sampleQuestion3,
     setSampleQuestion3,
-    endpoint
-  }: {
-    title: string,
-    setTitle: (title: string) => void,
-    systemMessage: string,
-    setSystemMessage: (systemMessage: string) => void,
-    sampleQuestion1: string,
-    setSampleQuestion1: (sampleQuestion1: string) => void,
-    sampleQuestion2: string,
-    setSampleQuestion2: (sampleQuestion1: string) => void,
-    sampleQuestion3: string,
-    setSampleQuestion3: (sampleQuestion1: string) => void,
-    endpoint: string
-  }
-) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  } = useAppContext();
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">

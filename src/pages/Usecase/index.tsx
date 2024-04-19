@@ -1,14 +1,40 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect } from 'react';
 import UsecaseInfoForm from '../../components/Usecase/UsecaseInfoForm';
 import UsecaseDataTable from '../../components/Usecase/UsecaseDataTable';
+import { useAppContext } from '../../context/AppContext';
 
 const Usecase: React.FC = () => {
-  const [title, setTitle] = useState<string>('');
-  const [systemMessage, setSystemMessage] = useState<string>('');
-  const [sampleQuestion1, setSampleQuestion1] = useState<string>('');
-  const [sampleQuestion2, setSampleQuestion2] = useState<string>('');
-  const [sampleQuestion3, setSampleQuestion3] = useState<string>('');
+  const { setUsecaseFiles } = useAppContext();
+
+  useEffect(() => {
+    setUsecaseFiles([
+      {
+        id: '1',
+        name: 'test1.text',
+        size: 3.5,
+      },
+      {
+        id: '2',
+        name: 'test2.text',
+        size: 3.5,
+      },
+      {
+        id: '3',
+        name: 'test3.text',
+        size: 3.5,
+      },
+      {
+        id: '4',
+        name: 'test4.text',
+        size: 3.5,
+      },
+      {
+        id: '5',
+        name: 'test5.text',
+        size: 3.5,
+      },
+    ]);
+  }, []);
 
   return (
     <>
@@ -20,19 +46,13 @@ const Usecase: React.FC = () => {
 
       <div className="flex flex-col gap-10">
         <UsecaseInfoForm
-          title={title}
-          setTitle={setTitle}
-          systemMessage={systemMessage}
-          setSystemMessage={setSystemMessage}
-          sampleQuestion1={sampleQuestion1}
-          setSampleQuestion1={setSampleQuestion1}
-          sampleQuestion2={sampleQuestion2}
-          setSampleQuestion2={setSampleQuestion2}
-          sampleQuestion3={sampleQuestion3}
-          setSampleQuestion3={setSampleQuestion3}
           endpoint='hogehoge'
         />
-        <UsecaseDataTable />
+        <UsecaseDataTable
+          uploadEndpoint="hogehoge"
+          deleteEndpoint='hogehoge'
+          listEndpoint='hogehoge'
+        />
       </div>
     </>
   );
